@@ -3,21 +3,15 @@
 import * as React from "react";
 import Image from "next/image";
 import {
-  IconCamera,
-  IconChartBar,
   IconDashboard,
-  IconDatabase,
-  IconFileAi,
-  IconFileDescription,
-  IconFileWord,
-  IconFolder,
-  IconHelp,
-  IconInnerShadowTop,
-  IconListDetails,
-  IconReport,
-  IconSearch,
-  IconSettings,
   IconUsers,
+  IconCalendarEvent,
+  IconCreditCard,
+  IconNews,
+  IconChartBar,
+  IconSettings,
+  IconHelp,
+  IconSearch,
 } from "@tabler/icons-react";
 
 import { NavDocuments } from "@/components/nav-documents";
@@ -43,110 +37,62 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
-      url: "#",
-      icon: IconListDetails,
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: IconChartBar,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: IconFolder,
-    },
-    {
-      title: "Team",
-      url: "#",
+      title: "Members",
+      url: "/dashboard/members",
       icon: IconUsers,
     },
-  ],
-  navClouds: [
     {
-      title: "Capture",
-      icon: IconCamera,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Events",
+      url: "/dashboard/events",
+      icon: IconCalendarEvent,
     },
     {
-      title: "Proposal",
-      icon: IconFileDescription,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Subscriptions",
+      url: "/dashboard/subscriptions",
+      icon: IconCreditCard,
     },
     {
-      title: "Prompts",
-      icon: IconFileAi,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Content",
+      url: "/dashboard/content",
+      icon: IconNews,
     },
   ],
   navSecondary: [
     {
+      title: "Analytics",
+      url: "/dashboard/analytics",
+      icon: IconChartBar,
+    },
+    {
       title: "Settings",
-      url: "#",
+      url: "/dashboard/settings",
       icon: IconSettings,
     },
     {
-      title: "Get Help",
-      url: "#",
+      title: "Help",
+      url: "/dashboard/help",
       icon: IconHelp,
     },
-    {
-      title: "Search",
-      url: "#",
-      icon: IconSearch,
-    },
   ],
-  documents: [
+  quickActions: [
     {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
+      name: "New Member",
+      url: "/dashboard/members/new",
+      action: "register",
     },
     {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
+      name: "Create Event",
+      url: "/dashboard/events/new",
+      action: "event",
     },
     {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
+      name: "Send Message",
+      url: "/dashboard/content/new",
+      action: "message",
     },
   ],
 };
@@ -183,7 +129,7 @@ export function AppSidebar({
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
+        {/* Quick Actions could be added here later */}
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
