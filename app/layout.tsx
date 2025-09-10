@@ -68,7 +68,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <html lang="en">
+            <html lang="en" suppressHydrationWarning>
               <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
               >
@@ -76,7 +76,7 @@ export default function RootLayout({
                   <SignedOut>
                     <SignInButton />
                     <SignUpButton>
-                      <button className="text-ceramic-white h-10 cursor-pointer rounded-full bg-[#6c47ff] px-4 text-sm font-medium sm:h-12 sm:px-5 sm:text-base">
+                      <button className="h-10 cursor-pointer rounded-xl border border-white/75 bg-transparent px-4 text-sm font-medium sm:h-12 sm:px-5 sm:text-base">
                         Sign Up
                       </button>
                     </SignUpButton>
