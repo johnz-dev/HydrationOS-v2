@@ -11,6 +11,7 @@ import {
   IconChartBar,
   IconSettings,
   IconHelp,
+  IconUser,
 } from "@tabler/icons-react";
 import { NavMain } from "@/components/nav-main";
 import { NavSecondary } from "@/components/nav-secondary";
@@ -59,6 +60,11 @@ const data = {
     },
   ],
   navSecondary: [
+    {
+      title: "Account",
+      url: "/account",
+      icon: IconUser,
+    },
     {
       title: "Analytics",
       url: "/dashboard/analytics",
