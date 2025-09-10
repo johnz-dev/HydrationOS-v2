@@ -1,5 +1,4 @@
 import { createClient } from "@supabase/supabase-js";
-import { Database } from "./types";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -13,10 +12,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
-export const supabase = createClient<Database>(
-  supabaseUrl || "",
-  supabaseAnonKey || ""
-);
+export const supabase = createClient(supabaseUrl || "", supabaseAnonKey || "");
 
 // Helper function to get current user profile
 export async function getCurrentUserProfile(clerkUserId: string) {
@@ -52,8 +48,8 @@ export async function upsertUserProfile(profile: {
   last_name?: string;
   avatar_url?: string;
   phone?: string;
-  role?: string;
-  status?: string;
+  role?: "admin" | "staff" | "member";
+  status?: "active" | "inactive" | "suspended";
 }) {
   try {
     // First try to find existing profile

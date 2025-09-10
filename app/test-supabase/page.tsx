@@ -1,7 +1,7 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
   getCurrentUserProfile,
   upsertUserProfile,
@@ -20,13 +20,7 @@ export default function TestSupabasePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (user) {
-      testSupabaseConnection();
-    }
-  }, [user]);
-
-  const testSupabaseConnection = async () => {
+  const testSupabaseConnection = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -83,7 +77,13 @@ export default function TestSupabasePage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      testSupabaseConnection();
+    }
+  }, [testSupabaseConnection, user]);
 
   if (!user) {
     return (

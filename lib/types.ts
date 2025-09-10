@@ -21,7 +21,7 @@ export interface UserProfile {
     phone?: string;
     relationship?: string;
   };
-  preferences?: Record<string, any>;
+  preferences?: Record<string, unknown>;
   role: "admin" | "staff" | "member";
   status: "active" | "inactive" | "suspended";
   created_at: string;
