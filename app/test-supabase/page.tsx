@@ -88,19 +88,19 @@ export default function TestSupabasePage() {
   if (!user) {
     return (
       <div className="container mx-auto p-8">
-        <h1 className="text-2xl font-bold mb-4">Supabase Connection Test</h1>
+        <h1 className="mb-4 text-2xl font-bold">Supabase Connection Test</h1>
         <p>Please sign in to test the Supabase connection.</p>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-8 space-y-8">
+    <div className="container mx-auto space-y-8 p-8">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Supabase Connection Test</h1>
         <button
           onClick={testSupabaseConnection}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
           disabled={loading}
         >
           {loading ? "Testing..." : "Retry Test"}
@@ -108,21 +108,21 @@ export default function TestSupabasePage() {
       </div>
 
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+        <div className="rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700">
           <strong>Error:</strong> {error}
         </div>
       )}
 
       {loading ? (
-        <div className="text-center py-8">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+        <div className="py-8 text-center">
+          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-blue-500"></div>
           <p className="mt-4">Testing Supabase connection...</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* User Profile */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">User Profile</h2>
+          <div className="bg-background border-white/65 rounded-lg border p-6 shadow">
+            <h2 className="mb-4 text-xl font-semibold">User Profile</h2>
             {profile ? (
               <div className="space-y-2">
                 <p>
@@ -148,13 +148,13 @@ export default function TestSupabasePage() {
           </div>
 
           {/* Subscription Plans */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">
+          <div className="bg-background border-white/65 rounded-lg border p-6 shadow">
+            <h2 className="mb-4 text-xl font-semibold">
               Subscription Plans ({plans.length})
             </h2>
             <div className="space-y-2">
               {plans.map((plan) => (
-                <div key={plan.id} className="border p-3 rounded">
+                <div key={plan.id} className="rounded border p-3">
                   <p>
                     <strong>{plan.name}</strong>
                   </p>
@@ -168,14 +168,14 @@ export default function TestSupabasePage() {
           </div>
 
           {/* Events */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">
+          <div className="bg-background border-white/65 rounded-lg border p-6 shadow">
+            <h2 className="mb-4 text-xl font-semibold">
               Upcoming Events ({events.length})
             </h2>
             {events.length > 0 ? (
               <div className="space-y-2">
                 {events.map((event) => (
-                  <div key={event.id} className="border p-3 rounded">
+                  <div key={event.id} className="rounded border p-3">
                     <p>
                       <strong>{event.title}</strong>
                     </p>
@@ -192,14 +192,14 @@ export default function TestSupabasePage() {
           </div>
 
           {/* Content */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">
+          <div className="bg-background border-white/65 rounded-lg border p-6 shadow">
+            <h2 className="mb-4 text-xl font-semibold">
               Recent Content ({content.length})
             </h2>
             {content.length > 0 ? (
               <div className="space-y-2">
                 {content.map((post) => (
-                  <div key={post.id} className="border p-3 rounded">
+                  <div key={post.id} className="rounded border p-3">
                     <p>
                       <strong>{post.title}</strong>
                     </p>
@@ -216,8 +216,8 @@ export default function TestSupabasePage() {
       )}
 
       {/* Debug Info */}
-      <div className="bg-gray-100 p-4 rounded-lg">
-        <h3 className="font-semibold mb-2">Debug Info</h3>
+      <div className="bg-background border-white/65 rounded-lg border p-6 shadow">
+        <h3 className="mb-2 font-semibold">Debug Info</h3>
         <p>
           <strong>Clerk User ID:</strong> {user.id}
         </p>
