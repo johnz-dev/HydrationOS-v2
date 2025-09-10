@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -25,7 +18,7 @@ export const metadata: Metadata = {
   title: "Hydration OS - Club Management Platform",
   description:
     "Professional club and member management platform by Hydration Development",
-  manifest: "/manifest.json", // Add this line
+  manifest: "/manifest.json",
   icons: {
     icon: [
       { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
@@ -57,40 +50,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ClerkProvider>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
-            <html lang="en" suppressHydrationWarning>
-              <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-              >
-                <header className="flex h-16 items-center justify-end gap-4 p-4">
-                  <SignedOut>
-                    <SignInButton />
-                    <SignUpButton>
-                      <button className="h-10 cursor-pointer rounded-xl border border-white/75 bg-transparent px-4 text-sm font-medium sm:h-12 sm:px-5 sm:text-base">
-                        Sign Up
-                      </button>
-                    </SignUpButton>
-                  </SignedOut>
-                  <SignedIn>
-                    <UserButton />
-                  </SignedIn>
-                </header>
-                {children}
-              </body>
-            </html>
+            {children}
           </ThemeProvider>
-        </ClerkProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
