@@ -8,10 +8,6 @@ import {
   getSubscriptionPlans,
   getUpcomingEvents,
   getRecentContent,
-  testUserProfilesTable,
-  checkUserProfilesTableSchema,
-  testDirectInsert,
-  testTableExistence,
 } from "@/lib/supabase-client";
 import { UserProfile, SubscriptionPlan, Event, ContentPost } from "@/lib/types";
 
@@ -44,22 +40,6 @@ export default function TestSupabasePage() {
       console.log("✅ Subscription plans:", plansData);
 
       if (user) {
-        // Test 1.5: Check if user_profiles table exists
-        console.log("1.5. Checking user_profiles table schema...");
-        await checkUserProfilesTableSchema();
-
-        // Test 1.6: Check user_profiles table access
-        console.log("1.6. Testing user_profiles table access...");
-        await testUserProfilesTable();
-
-        // Test 1.7: Check if other tables exist
-        console.log("1.7. Testing table existence...");
-        await testTableExistence();
-
-        // Test 1.8: Try a direct insert
-        console.log("1.8. Testing direct insert...");
-        await testDirectInsert();
-
         // Test 2: Get or create user profile
         console.log("2. Fetching user profile...");
         let userProfile = await getCurrentUserProfile(user.id);
