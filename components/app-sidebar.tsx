@@ -36,9 +36,9 @@ import {
 
 const data = {
   user: {
-    name: "Hydration Development",
-    email: "info@hydrationdevelopment.com",
-    avatar: "/logo-hd.svg",
+    name: "John Zhou",
+    email: "johnz@hydrationdevelopment.com",
+    avatar: "/my-portfolio.jpg",
   },
   navMain: [
     {
