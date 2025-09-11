@@ -490,4 +490,3 @@ export function AccountContent() {
     </div>
   );
 }
-
